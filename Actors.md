@@ -10,9 +10,9 @@
 
 :Client: as client
 
-elec --> carp
-carp --> roof
-roof --> elec
+elec <--> carp
+carp <--> roof
+roof <--> elec
 client --> elec : request
 
 note right of client : I want my roof to get repaired

@@ -4,17 +4,44 @@
 
 
 namespace package.service{
-    interface "ProcessChain" as chain{}
+    interface "RequestChain" as chain{
+        --
+        +nextRequest(request : RequestChain)
+        +doAndCloseRequest(request : Request)
+    }
 
-    class "A" as a{}
+    class "RooferService" as a{
+        -RequestChain requestChain
+        --
+        +nextRequest(request : RequestChain)
+        +doAndCloseRequest(request : Request)
+    }
 
-    class "B" as b{}
+    class "ElectricianService" as b{
+        -RequestChain requestChain
+        --
+        +nextRequest(request : RequestChain)
+        +doAndCloseRequest(request : Request)
+    }
 
-    class "C" as c{}
+    class "CarpenterService" as c{
+        -RequestChain requestChain
+        --
+        +nextRequest(request : RequestChain)
+        +doAndCloseRequest(request : Request)
+    }
 }
 
 namespace package.domain.model{
-    class "Client" as client{}
+    class "Request" as client{
+        -String requestDescription
+        -String requestType
+        -boolean requestDone
+        --
+        +get requestType()
+        +get requestDescription()
+        +set requestDone(requestDone : boolean)
+    }
 }
 
 package.service.a -u-|> package.service.chain
