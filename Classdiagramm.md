@@ -35,7 +35,7 @@ namespace package.service{
 namespace package.domain.model{
     class "Request" as client{
         -String requestDescription
-        -String requestType
+        -Enum requestType
         -boolean requestDone
         --
         +get requestType()
